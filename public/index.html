@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Tracking Dashboard</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 600px;
+        }
+        .car-list {
+            margin: 20px;
+            list-style-type: none;
+            padding: 0;
+        }
+        .car-list li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Car Tracking Dashboard</h1>
+    <div id="map"></div>
+    <ul class="car-list">
+        <li>Car 1: 🚗 Status: Moving</li>
+        <li>Car 2: 🚙 Status: Stopped</li>
+        <li>Car 3: 🚙 Status: Idle</li>
+    </ul>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([51.505, -0.09], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+        }).addTo(map);
+
+        // Example car positions
+        var car1 = L.marker([51.5, -0.09]).addTo(map).bindPopup('Car 1').openPopup();
+        var car2 = L.marker([51.51, -0.1]).addTo(map).bindPopup('Car 2');
+        var car3 = L.marker([51.49, -0.08]).addTo(map).bindPopup('Car 3');
+    </script>
+</body>
+</html>
